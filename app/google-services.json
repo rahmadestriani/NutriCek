@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "1088626249485",
+    "project_id": "nutricek-id",
+    "storage_bucket": "nutricek-id.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1088626249485:android:51b8badee9fdff5bc32a44",
+        "android_client_info": {
+          "package_name": "com.bangkit.iri.capstoneproject"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1088626249485-ja0fnaae9f0gmfq12m96muv7mqmv52d8.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDwVkZBY_UuuOL41dgzoB91H-y_8LH97LA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1088626249485-ja0fnaae9f0gmfq12m96muv7mqmv52d8.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

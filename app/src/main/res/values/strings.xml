@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">NutriCek</string>
+
+    <!-- Content Description -->
+    <string name="addbutton">addButton</string>
+    <string name="fabcamera">fabCamera</string>
+    <string name="fabupload">fabUpload</string>
+    <string name="main_picture">main Picture</string>
+    <string name="kambing">testesetsetse</string>
+    <string name="kambing2">"KAM,SDBJASDVGJASGD "</string>
+    <string name="object_name">OBJECT NAME</string>
+    <string name="fabsearch">fabSearch</string>
+    <string name="nutrisi">Nutrisi</string>
+
+    <!-- ISI -->
+</resources>
