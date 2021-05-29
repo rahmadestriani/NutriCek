@@ -18,6 +18,8 @@ class MainActivity : AppCompatActivity() {
         Handler(Looper.getMainLooper()).postDelayed({
             intent = Intent(this@MainActivity, HomeActivity::class.java)
             startActivity(intent)
+            finish()
         }, 1500)
     }
+
 }

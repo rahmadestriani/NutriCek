@@ -4,10 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context=".HomeActivity"
     android:background="@drawable/background"
-    android:scaleType="fitCenter">
+    android:orientation="vertical"
+    android:scaleType="fitCenter"
+    tools:context=".HomeActivity">
 
 
     <ScrollView
@@ -24,13 +24,14 @@
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="250dp"
-                tools:ignore="MissingConstraints"
-                app:cardCornerRadius="10dp">
+                app:cardCornerRadius="10dp"
+                tools:ignore="MissingConstraints">
 
                 <ImageView
                     android:id="@+id/img_main"
                     android:layout_width="match_parent"
                     android:layout_height="250dp"
+                    android:contentDescription="@string/imageMain"
                     android:src="@drawable/ic_default_img"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -46,9 +47,9 @@
                 android:layout_marginTop="16dp"
                 android:fontFamily="@font/montserrat"
                 android:textAlignment="center"
+                android:textColor="@color/black"
                 android:textSize="28sp"
-                android:textStyle="bold"
-                android:textColor="@color/black" />
+                android:textStyle="bold" />
 
             <TableLayout
                 android:layout_width="match_parent"
@@ -56,38 +57,40 @@
                 android:layout_marginTop="10dp"
                 android:stretchColumns="1">
 
-                <TableRow android:background="#aa8976">
+                <TableRow android:background="@color/brown_primary">
+
                     <TextView
-                        android:text="NUTRITION"
                         android:fontFamily="@font/montserrat"
+                        android:paddingStart="10dp"
+                        android:text="@string/nutrition"
                         android:textAlignment="viewStart"
-                        android:textSize="20sp"
-                        android:textStyle="bold"
                         android:textColor="@color/white"
-                        android:paddingLeft="10dp"/>
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
                 </TableRow>
 
                 <View
                     android:layout_height="3dip"
                     android:background="@color/black" />
 
-                <TableRow android:background="#f0e2d0">
-                    <TextView
-                        android:fontFamily="@font/montserrat"
-                        android:paddingLeft="10dp"
-                        android:textColor="@color/black"
-                        android:textSize="20sp"
-                        android:text="Energy"/>
+                <TableRow android:background="@color/brown_secondary">
 
                     <TextView
-                        android:layout_column="1"
+                        android:fontFamily="@font/montserrat"
+                        android:paddingStart="10dp"
+                        android:text="@string/energy"
+                        android:textColor="@color/black"
+                        android:textSize="20sp" />
+
+                    <TextView
                         android:id="@+id/energy"
+                        android:layout_column="1"
+                        android:gravity="center"
                         android:paddingLeft="10dp"
-                        android:textColor="@color/black"
-                        android:textSize="20sp"
                         android:paddingRight="10dp"
-                        android:text="-"
-                        android:gravity="center"/>
+                        android:text="@string/strip"
+                        android:textColor="@color/black"
+                        android:textSize="20sp" />
 
                 </TableRow>
 
@@ -95,128 +98,135 @@
                     android:layout_height="1dip"
                     android:background="@color/black" />
 
-                <TableRow android:background="#f0e2d0">
+                <TableRow android:background="@color/brown_secondary">
+
                     <TextView
-                        android:text="Protein"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/montserrat"
+                        android:paddingStart="10dp"
+                        android:text="@string/protein"
                         android:textAlignment="viewStart"
-                        android:textSize="20sp"
                         android:textColor="@color/black"
-                        android:paddingLeft="10dp"/>
+                        android:textSize="20sp" />
 
                     <TextView
-                        android:layout_column="1"
                         android:id="@+id/protein"
+                        android:layout_column="1"
+                        android:gravity="center"
                         android:paddingLeft="10dp"
-                        android:textColor="@color/black"
-                        android:textSize="20sp"
                         android:paddingRight="10dp"
-                        android:text="-"
-                        android:gravity="center"/>
+                        android:text="@string/strip"
+                        android:textColor="@color/black"
+                        android:textSize="20sp" />
                 </TableRow>
 
                 <View
                     android:layout_height="1dip"
                     android:background="@color/black" />
 
-                <TableRow android:background="#f0e2d0">
+                <TableRow android:background="@color/brown_secondary">
+
                     <TextView
-                        android:text="Fats"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/montserrat"
+                        android:paddingStart="10dp"
+                        android:text="@string/fats"
                         android:textAlignment="viewStart"
-                        android:textSize="20sp"
                         android:textColor="@color/black"
-                        android:paddingLeft="10dp"/>
+                        android:textSize="20sp" />
 
                     <TextView
-                        android:layout_column="1"
                         android:id="@+id/fats"
+                        android:layout_column="1"
+                        android:gravity="center"
                         android:paddingLeft="10dp"
-                        android:textColor="@color/black"
-                        android:textSize="20sp"
                         android:paddingRight="10dp"
-                        android:text="-"
-                        android:gravity="center"/>
+                        android:text="@string/strip"
+                        android:textColor="@color/black"
+                        android:textSize="20sp" />
                 </TableRow>
 
                 <View
                     android:layout_height="1dip"
                     android:background="@color/black" />
 
-                <TableRow android:background="#f0e2d0">
+                <TableRow android:background="@color/brown_secondary">
+
                     <TextView
-                        android:text="Carbohydrate"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/montserrat"
+                        android:paddingStart="10dp"
+                        android:text="@string/carbohydrate"
                         android:textAlignment="viewStart"
-                        android:textSize="20sp"
                         android:textColor="@color/black"
-                        android:paddingLeft="10dp"/>
+                        android:textSize="20sp" />
 
                     <TextView
-                        android:layout_column="1"
                         android:id="@+id/carbohydrate"
+                        android:layout_column="1"
+                        android:gravity="center"
                         android:paddingLeft="10dp"
-                        android:textColor="@color/black"
-                        android:textSize="20sp"
                         android:paddingRight="10dp"
                         android:text="-"
-                        android:gravity="center"/>
+                        android:textColor="@color/black"
+                        android:textSize="20sp" />
                 </TableRow>
 
                 <View
                     android:layout_height="1dip"
                     android:background="@color/black" />
 
-                <TableRow android:background="#f0e2d0">
+                <TableRow android:background="@color/brown_secondary">
+
                     <TextView
-                        android:text="Vitamin A"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:textAlignment="viewStart"
                         android:fontFamily="@font/montserrat"
-                        android:textSize="20sp"
+                        android:paddingStart="10dp"
+                        android:text="@string/vitamin_a"
+                        android:textAlignment="viewStart"
                         android:textColor="@color/black"
-                        android:paddingLeft="10dp"/>
+                        android:textSize="20sp" />
+
                     <TextView
-                        android:layout_column="1"
                         android:id="@+id/VitA"
+                        android:layout_column="1"
+                        android:gravity="center"
                         android:paddingLeft="10dp"
-                        android:textColor="@color/black"
-                        android:textSize="20sp"
                         android:paddingRight="10dp"
                         android:text="-"
-                        android:gravity="center"/>
+                        android:textColor="@color/black"
+                        android:textSize="20sp" />
                 </TableRow>
 
                 <View
                     android:layout_height="1dip"
                     android:background="@color/black" />
 
-                <TableRow android:background="#f0e2d0">
+                <TableRow android:background="@color/brown_secondary">
+
                     <TextView
-                        android:text="Vitamin B1"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/montserrat"
+                        android:paddingStart="10dp"
+                        android:text="@string/vitamin_b1"
                         android:textAlignment="viewStart"
-                        android:textSize="20sp"
                         android:textColor="@color/black"
-                        android:paddingLeft="10dp"/>
+                        android:textSize="20sp" />
+
                     <TextView
-                        android:layout_column="1"
                         android:id="@+id/VitB1"
+                        android:layout_column="1"
+                        android:gravity="center"
                         android:paddingLeft="10dp"
-                        android:textColor="@color/black"
-                        android:textSize="20sp"
                         android:paddingRight="10dp"
-                        android:text="-"
-                        android:gravity="center"/>
+                        android:text="@string/strip"
+                        android:textColor="@color/black"
+                        android:textSize="20sp" />
                 </TableRow>
 
 
@@ -224,25 +234,27 @@
                     android:layout_height="1dip"
                     android:background="@color/black" />
 
-                <TableRow android:background="#f0e2d0">
+                <TableRow android:background="@color/brown_secondary">
+
                     <TextView
-                        android:text="Vitamin C"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/montserrat"
+                        android:paddingStart="10dp"
+                        android:text="@string/vitamin_c"
                         android:textAlignment="viewStart"
-                        android:textSize="20sp"
                         android:textColor="@color/black"
-                        android:paddingLeft="10dp"/>
+                        android:textSize="20sp" />
+
                     <TextView
-                        android:layout_column="1"
                         android:id="@+id/VitC"
+                        android:layout_column="1"
+                        android:gravity="center"
                         android:paddingLeft="10dp"
-                        android:textColor="@color/black"
-                        android:textSize="20sp"
                         android:paddingRight="10dp"
                         android:text="-"
-                        android:gravity="center"/>
+                        android:textColor="@color/black"
+                        android:textSize="20sp" />
                 </TableRow>
 
                 <View
@@ -265,23 +277,23 @@
             android:layout_height="wrap_content"
             android:layout_marginEnd="24dp"
             android:layout_marginBottom="24dp"
-            android:backgroundTint="#aa8976"
+            android:backgroundTint="@color/brown_primary"
             android:clickable="true"
             android:contentDescription="@string/addbutton"
             android:focusable="true"
             android:tint="@color/white"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:srcCompat="@drawable/ic_add"
-            app:rippleColor="@color/white"/>
+            app:rippleColor="@color/white"
+            app:srcCompat="@drawable/ic_add" />
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/fab_camera"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="16dp"
+            android:backgroundTint="@color/brown_secondary"
             android:clickable="true"
-            android:backgroundTint="#f0e2d0"
             android:contentDescription="@string/fabcamera"
             android:focusable="true"
             android:visibility="invisible"
@@ -295,8 +307,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="16dp"
+            android:backgroundTint="@color/brown_secondary"
             android:clickable="true"
-            android:backgroundTint="#f0e2d0"
             android:contentDescription="@string/fabupload"
             android:focusable="true"
             android:visibility="invisible"
@@ -310,11 +322,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="16dp"
+            android:backgroundTint="@color/brown_secondary"
             android:clickable="true"
             android:contentDescription="@string/fabsearch"
             android:focusable="true"
             android:visibility="invisible"
-            android:backgroundTint="#f0e2d0"
             app:layout_constraintBottom_toTopOf="@id/fab_upload"
             app:layout_constraintEnd_toEndOf="@id/fab_upload"
             app:layout_constraintStart_toStartOf="@id/fab_upload"

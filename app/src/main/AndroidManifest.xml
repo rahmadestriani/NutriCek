@@ -22,7 +22,7 @@
                 android:resource="@xml/resource"/>
         </provider>
 
-        <activity android:name=".HomeActivity"></activity>
+        <activity android:name=".HomeActivity" />
         <activity android:name=".splash.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

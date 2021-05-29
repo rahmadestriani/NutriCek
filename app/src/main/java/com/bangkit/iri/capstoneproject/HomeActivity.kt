@@ -11,28 +11,20 @@ import android.util.Log
 import android.view.View
 import android.view.animation.Animation
 import android.view.animation.AnimationUtils
-import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.FileProvider
 import com.bangkit.iri.capstoneproject.databinding.ActivityHomeBinding
-import com.bangkit.iri.capstoneproject.ml.MobilenetV110224Quant
-import com.bangkit.iri.capstoneproject.ml.TfHubModel
-import com.google.android.gms.tasks.OnCompleteListener
+import com.bangkit.iri.capstoneproject.ml.AutoModel15ClassesTfhub2
 import com.google.firebase.firestore.FirebaseFirestore
-import com.google.firebase.firestore.QuerySnapshot
-import org.tensorflow.lite.DataType
 import org.tensorflow.lite.support.image.TensorImage
-import org.tensorflow.lite.support.tensorbuffer.TensorBuffer
 import java.io.File
-
 
 class HomeActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityHomeBinding
-
-    lateinit var bitmap: Bitmap
-    lateinit var photoFile: File
+    private lateinit var bitmap: Bitmap
+    private lateinit var photoFile: File
 
     companion object {
         const val REQUEST_UPLOAD = 100
@@ -43,26 +35,26 @@ class HomeActivity : AppCompatActivity() {
     //Button Animations
     private val rotateOpen: Animation by lazy {
         AnimationUtils.loadAnimation(
-            this,
-            R.anim.rotate_open_anim
+                this,
+                R.anim.rotate_open_anim
         )
     }
     private val rotateClose: Animation by lazy {
         AnimationUtils.loadAnimation(
-            this,
-            R.anim.rotate_close_anim
+                this,
+                R.anim.rotate_close_anim
         )
     }
     private val fromBottom: Animation by lazy {
         AnimationUtils.loadAnimation(
-            this,
-            R.anim.from_bottom_anim
+                this,
+                R.anim.from_bottom_anim
         )
     }
     private val toBottom: Animation by lazy {
         AnimationUtils.loadAnimation(
-            this,
-            R.anim.to_bottom_anim
+                this,
+                R.anim.to_bottom_anim
         )
     }
     private var clicked = false
@@ -75,24 +67,18 @@ class HomeActivity : AppCompatActivity() {
 
         val db = FirebaseFirestore.getInstance()
 
-        val fileName = "models.txt"
-        val inputString = application.assets.open(fileName).bufferedReader().use { it.readText() }
-        //var modelNames = inputString.split("\n")
-
         binding.addBtn.setOnClickListener {
             onAddButtonClicked()
-
         }
-
 
         binding.fabCamera.setOnClickListener {
             val intent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
             photoFile = getPhotoFile(FILE_NAME)
 
             val fileProvider = FileProvider.getUriForFile(
-                this,
-                "com.bangkit.iri.capstoneproject.fileprovider",
-                photoFile
+                    this,
+                    "com.bangkit.iri.capstoneproject.fileprovider",
+                    photoFile
             )
             intent.putExtra(MediaStore.EXTRA_OUTPUT, fileProvider)
 
@@ -100,7 +86,7 @@ class HomeActivity : AppCompatActivity() {
             if (intent.resolveActivity(this.packageManager) != null) {
                 startActivityForResult(intent, REQUEST_CAM)
             } else {
-                Toast.makeText(this, "Camera tidak bisa dibuka", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "Camera Application won't start", Toast.LENGTH_SHORT).show()
             }
         }
 
@@ -111,72 +97,41 @@ class HomeActivity : AppCompatActivity() {
             startActivityForResult(intent, REQUEST_UPLOAD)
         }
 
-        //PROBLEMNNYA ADA DI SINI :3
         binding.fabSearch.setOnClickListener {
-            //val resizedPic = Bitmap.createScaledBitmap(bitmap, 224, 224, true)
-            //val model = MobilenetV110224Quant.newInstance(this)
 
-            val model = TfHubModel.newInstance(this)
-
-// Creates inputs for reference.
-            /*val inputFeature0 = TensorBuffer.createFixedSize(
-                intArrayOf(1, 224, 224, 3),
-                DataType.UINT8
-            )
-            val tbuffer = TensorImage.fromBitmap(resizedPic)
-            var byteBuffer = tbuffer.buffer
-            inputFeature0.loadBuffer(byteBuffer)*/
-
+            val model = AutoModel15ClassesTfhub2.newInstance(this)
 
             val image = TensorImage.fromBitmap(bitmap)
-
-// Runs model inference and gets result.
-           /* val outputs = model.process(inputFeature0)
-            val outputFeature0 = outputs.outputFeature0AsTensorBuffer
-
-            var maxPredict = getMaxPredict(outputFeature0.floatArray)*/
-
             val outputs = model.process(image)
+
             val probability = outputs.probabilityAsCategoryList.maxByOrNull { it.score }
+            val prediction = probability?.label
 
-            val prediction = probability!!.label
-
-            binding.tvTitleMain.setText(prediction)
-
-            val energy = findViewById(R.id.energy) as TextView
-            val protein = findViewById(R.id.protein) as TextView
-            val fats = findViewById(R.id.fats) as TextView
-            val carbohydrate = findViewById(R.id.carbohydrate) as TextView
-            val VitA = findViewById(R.id.VitA) as TextView
-            val VitB1 = findViewById(R.id.VitB1) as TextView
-            val VitC = findViewById(R.id.VitC) as TextView
+            binding.tvTitleMain.text = prediction
 
             val docRef = db.collection("nurtisi")
-            val query = docRef.whereEqualTo("Name",prediction)
+            val query = docRef.whereEqualTo("Name", prediction)
             query.get()
-                .addOnSuccessListener { documents ->
-                    for (document in documents) {
-                        Log.d("exist", "${document.id} => ${document.data}")
-                        energy.text = document.getString("Energy")
-                        protein.text = document.getString("Protein")
-                        fats.text = document.getString("Fats")
-                        carbohydrate.text = document.getString("Carbohydrate")
-                        VitA.text = document.getString("VitA")
-                        VitB1.text = document.getString("VitB1")
-                        VitC.text = document.getString("VitC")
+                    .addOnSuccessListener { documents ->
+                        for (document in documents) {
+                            Log.d("exist", "${document.id} => ${document.data}")
+                            binding.energy.text = document.getString("Energy")
+                            binding.protein.text = document.getString("Protein")
+                            binding.fats.text = document.getString("Fats")
+                            binding.carbohydrate.text = document.getString("Carbohydrate")
+                            binding.VitA.text = document.getString("VitA")
+                            binding.VitB1.text = document.getString("VitB1")
+                            binding.VitC.text = document.getString("VitC")
+                        }
                     }
-                }
-                .addOnFailureListener { exception ->
-                    Log.d("error", "get failed with ", exception)
-                }
-
-// Releases model resources if no longer used.
+                    .addOnFailureListener { e ->
+                        Log.d("MyPrediction", "Prediction Failed :  ", e)
+                    }
             model.close()
         }
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-
         when (requestCode) {
             REQUEST_UPLOAD -> {
                 var uri: Uri? = data?.data
@@ -201,25 +156,10 @@ class HomeActivity : AppCompatActivity() {
         return result
     }
 
-    //get max prediction
-    private fun getMaxPredict(arr: FloatArray): Int {
-        var ind = 0
-        var min = 0.0f
-
-        for (i in 0..1000) {
-            if (arr[i] > min) {
-                min = arr[i]
-                ind = i
-            }
-        }
-        return ind
-    }
-
-    //BUTTONS
+    //buttons
     private fun onAddButtonClicked() {
         setButton(clicked)
         clicked = !clicked
-
     }
 
     private fun setButton(clicked: Boolean) {
