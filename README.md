@@ -1,5 +1,5 @@
 # NutriCek
-Capstone Project in Bangkit Program
+Capstone Project in Bangkit Program by B21-CAP0231 team // FullyDeveloped1337 team
 
 NutriCek is a mobile application that provide a simple solution to develop your daily habits by controlling your daily nutritional intake
 
