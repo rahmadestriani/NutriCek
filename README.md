@@ -3,7 +3,7 @@ Capstone Project in Bangkit Program by B21-CAP0231 team // FullyDeveloped1337 te
 
 NutriCek is a mobile application that provide a simple solution to develop your daily habits by controlling your daily nutritional intake
 
-You can use this application using your mobile camera or image file from your mobile device to detect the fruits or vegetables and diplays the nutrients contained
+You can use this application using your mobile camera or image file from your mobile device to detect the fruits or vegetables and displays the nutrients contained
 
 How to replicate this application :
 1. Build the model from ipynb on your local advice
